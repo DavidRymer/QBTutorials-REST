@@ -1,0 +1,36 @@
+<html>
+    <head>
+            <script>
+  
+
+            function findStuff(id){
+
+                var id = 1;
+                var difficulty = "medium";
+                var level = "gcse";
+                var topic = "trigonometry";
+                var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestion/' + id+"/" + difficulty + "/" +level +"/" + topic;
+	            var request = new XMLHttpRequest();
+	            request.open('GET', requestURL);
+	            request.responseType = 'json';
+	            request.send();
+	            request.onload = function () {
+		            var reply = request.response;
+		            var myH1 = document.createElement('h1');
+		            myH1.textContent = reply[0].question;
+		            document.getElementsByTagName('body')[0].appendChild(myH1);
+	            }
+            }
+            </script>
+    </head>
+    <body>
+        <p>Hello</p>
+        <input type= "button" onclick = "addStuff()" value= "add">
+          <input type= "button" onclick = "cleanStuff()" value= "delete">
+            <input type= "button" onclick = "addInterestingStuff()" value= "add Matt">
+              <input type= "button" onclick = "findStuff(1)" value= "find Ttony">
+                <input type= "button" onclick = "findStuff(2)" value= "find Matt">
+    </body>
+   
+     
+</html>

@@ -1,0 +1,39 @@
+<html>
+    <head>
+            <script>
+  
+
+            function findStuff(id){
+
+                var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestion/' + id;
+	            var request = new XMLHttpRequest();
+	            request.open('GET', requestURL);
+	            request.responseType = 'json';
+	            request.send();
+	            request.onload = function () {
+		            var reply = request.response;
+
+		            for (var i = 0; i < reply.length; i++ ) {
+		            var myH1 = document.createElement('h1');
+		            var myTextbox = document.createElement('input');
+		            myTextbox.type = 'text';
+		            myTextbox.setAttribute("id", "textbox" + i);
+		            myH1.textContent = reply[i].question;
+		            document.getElementsByTagName('body')[0].appendChild(myH1);
+		            document.getElementsByTagName('body')[0].appendChild(myTextbox);
+		            }
+	            }
+            }
+            </script>
+    </head>
+    <body>
+        <p>Hello</p>
+        <input type= "button" onclick = "addStuff()" value= "add">
+          <input type= "button" onclick = "cleanStuff()" value= "delete">
+            <input type= "button" onclick = "addInterestingStuff()" value= "add Matt">
+              <input type= "button" onclick = "findStuff(3)" value= "find Ttony">
+                <input type= "button" onclick = "findStuff(2)" value= "find Matt">
+    </body>
+   
+     
+</html>
