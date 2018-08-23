@@ -105,12 +105,12 @@ public class JDBC {
 			e.printStackTrace();
 		}
 
-		disconnect();
+		
 		return ja;
 
 	}
 	
-	public static String getQuestions(int questionLineID) throws SQLException {
+	public static String getQuestions(String topic, String difficulty, String level) throws SQLException {
 
 		dbConnect();
 		ResultSet rs = null;
@@ -122,6 +122,13 @@ public class JDBC {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        String[] fields = {"question_line_id"};
+		String questionLine = read(fields, "test", "topic = " + "'" + topic +
+				"' AND " + "difficulty = " + "'" + difficulty+"' AND " +
+				"level = " + "'" + level+"';", "", "").toString();
+		
+		int questionLineID = OnlineTest.firstInt(questionLine);
+		
 
 
 		String sql2 = "SELECT test_questions.question, test_questions.question_id, question_line.question_line_id, test_questions.answer\r\n" + 

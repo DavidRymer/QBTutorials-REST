@@ -107,28 +107,30 @@ public class WebsiteConnect {
 
 	
 	@GET
-	@Path("/getQuestion/{questionLineID}")
-	public String getQuestions(@PathParam("questionLineID") int questionLineID) throws SQLException {
+	@Path("/getQuestionLine/{topic}/{difficulty}/{level}")
+	public String getQuestions(@PathParam("topic") String topic, @PathParam("difficulty") String difficulty, @PathParam("level") String level) throws SQLException {
+		String questions = JDBC.getQuestions(topic, difficulty, level);
 		
-		return JDBC.getQuestions(questionLineID);
+		System.out.println(questions);
+		return questions;
 	}
 	
-	@GET
-	@Path("/getQuestionLine/{topic}/{difficulty}/{level}")
-	public String getQuestionLineId(@PathParam("topic") String topic, @PathParam("difficulty") String difficulty, @PathParam("level") String level) throws SQLException {
-		
-		String[] fields = {"question_line_id"};
-		
-		String questionLine = JDBC.read(fields, "test", "topic = " + "'" + topic + "' AND " + "difficulty = " + "'" + difficulty+"' AND " + "level = " + "'" + level+"';", "", "").toString();
-//		int questionLineId = OnlineTest.firstInt(questionLine);
-		
-		questionLine = questionLine.replace("[", "");
-		questionLine = questionLine.replace("]", "");
-		System.out.println(questionLine);
-		return questionLine;
-		
-		
-	}
+//	@GET
+//	@Path("/getQuestionLine/{topic}/{difficulty}/{level}")
+//	public String getQuestionLineId(@PathParam("topic") String topic, @PathParam("difficulty") String difficulty, @PathParam("level") String level) throws SQLException {
+//		
+//		String[] fields = {"question_line_id"};
+//		
+//		String questionLine = JDBC.read(fields, "test", "topic = " + "'" + topic + "' AND " + "difficulty = " + "'" + difficulty+"' AND " + "level = " + "'" + level+"';", "", "").toString();
+////		int questionLineId = OnlineTest.firstInt(questionLine);
+//		
+//		questionLine = questionLine.replace("[", "");
+//		questionLine = questionLine.replace("]", "");
+//		System.out.println(questionLine);
+//		return questionLine;
+//		
+//		
+//	}
 	
 	
 		

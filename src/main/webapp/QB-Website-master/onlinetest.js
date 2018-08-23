@@ -2,49 +2,49 @@
 var section = document.querySelector("section");
 var reply = null;
 var score = 0;
-var ana = "ff";
 
-var topic = "trigonometry";
-var difficulty = "medium";
+
+var topic = "numbers";
+var difficulty = "easy";
 var level = "gcse";
 
 
-function getQuestionLineId() {
 
-	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestionLine/' + topic + "/" + difficulty + "/" + level;
-	var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
-    request.onload = function anatest() {
-    	var reply1 = request.response;
-    	console.log(reply1.question_line_id);
-        var myH1 = document.createElement('h1');
-        myH1.textContent = reply1.question_line_id;
-        document.getElementsByTagName('section')[0].appendChild(myH1);
-        ana = reply1.question_line_id;
-        
-    }
-
-   
-}
+//function getQuestionLineId() {
+//
+//	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestionLine/' + topic + "/" + difficulty + "/" + level;
+//	var request = new XMLHttpRequest();
+//    request.open('GET', requestURL);
+//    request.responseType = 'json';
+//    request.send();
+//    request.onload = function () {
+//    	var reply1 = request.response;
+//        var myH1 = document.createElement('h1');
+//        myH1.textContent = reply1.question_line_id;
+//        document.getElementsByTagName('section')[0].appendChild(myH1);
+//        return ana;
+//    }
+//
+//   
+//}
 
 function getQuestions(){
-    getQuestionLineId();
-	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestion/' + ana;
+    
+	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestionLine/' + topic + "/" + difficulty + "/" + level;
 	var request = new XMLHttpRequest();
 	request.open('GET', requestURL);
 	request.responseType = 'json';
 	request.send();
 	request.onload = function () {
 		reply = request.response;
+		console.log(reply[0].question);
 
 		for (var i = 0; i < reply.length; i++ ) {
 			var myH1 = document.createElement('h3');
 			var myTextbox = document.createElement('input');
 			var myButton = document.createElement('button');
 			myButton.innerHTML = "Check";
-				myTextbox.type = 'text';
+			myTextbox.type = 'text';
 			myTextbox.setAttribute("id", "textbox" + i);
 			myButton.setAttribute("onclick", "check("+i+")");
 			myButton.setAttribute("id", "button" + i)
