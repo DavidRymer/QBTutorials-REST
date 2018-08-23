@@ -1,26 +1,69 @@
 <html>
     <head>
             <script>
-  
+
+            var reply = null;
+            var score = 0;
 
             function findStuff(id){
 
-                var id = 1;
-                var difficulty = "medium";
-                var level = "gcse";
-                var topic = "trigonometry";
-                var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestion/' + id+"/" + difficulty + "/" +level +"/" + topic;
+                var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestion/' + id;
 	            var request = new XMLHttpRequest();
 	            request.open('GET', requestURL);
 	            request.responseType = 'json';
 	            request.send();
 	            request.onload = function () {
-		            var reply = request.response;
+		            reply = request.response;
+
+		            for (var i = 0; i < reply.length; i++ ) {
 		            var myH1 = document.createElement('h1');
-		            myH1.textContent = reply[0].question;
+		            var myTextbox = document.createElement('input');
+		            var myButton = document.createElement('button');
+		            myButton.innerHTML = "submit"
+		            myTextbox.type = 'text';
+		            myTextbox.setAttribute("id", "textbox" + i);
+		            myButton.setAttribute("onclick", "check("+i+")");
+		            myButton.setAttribute("id", "button" + i)
+		            
+		            myH1.textContent = reply[i].question;
 		            document.getElementsByTagName('body')[0].appendChild(myH1);
+		            document.getElementsByTagName('body')[0].appendChild(myTextbox);
+		            document.getElementsByTagName('body')[0].appendChild(myButton);
+		            }
+
+		            var myScore = document.createElement('p');
+		            myScore.setAttribute("id", "score");
+		            var submitButton = document.createElement('button');
+		            submitButton.innerHTML = "Submit test"
+		            submitButton.setAttribute("onclick", "calculateScore()");
+		            document.getElementsByTagName('body')[0].appendChild(submitButton);
+		            document.getElementsByTagName('body')[0].appendChild(myScore);
+		            
 	            }
             }
+
+            function check(p1) {
+               if (document.getElementById("textbox"+p1).value == reply[p1].answer) {
+
+                   document.getElementById("textbox"+p1).value = "correct";
+                   document.getElementById("textbox"+p1).disabled = true;
+                   document.getElementById("button"+p1).disabled = true;
+                   score++;
+
+                   }
+               else {
+
+            	   document.getElementById("textbox"+p1).value = "incorrect";
+            	   document.getElementById("textbox"+p1).disabled = true;
+            	   document.getElementById("button"+p1).disabled = true;
+
+                   }
+                }
+            function calculateScore() {
+
+            	document.getElementById('score').innerHTML = "Your scored "+ ((score/reply.length) * 100).toFixed(2) + "%";
+
+                }
             </script>
     </head>
     <body>
@@ -28,7 +71,7 @@
         <input type= "button" onclick = "addStuff()" value= "add">
           <input type= "button" onclick = "cleanStuff()" value= "delete">
             <input type= "button" onclick = "addInterestingStuff()" value= "add Matt">
-              <input type= "button" onclick = "findStuff(1)" value= "find Ttony">
+              <input type= "button" onclick = "findStuff(3)" value= "find Ttony">
                 <input type= "button" onclick = "findStuff(2)" value= "find Matt">
     </body>
    
