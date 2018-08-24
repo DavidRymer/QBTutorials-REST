@@ -131,7 +131,7 @@
                 <hr>
 
                 <label for="topic"><b>Topic</b></label>
-                <select>
+                <select id = topic>
                     <option value="default"> </option>
                     <option value="number">Number</option>
                     <option value="algebra">Algebra</option>
@@ -142,7 +142,7 @@
                 </select><br>
 
                 <label for="difficulty"><b>Difficulty</b></label>
-                <select>
+                <select id = difficulty>
                     <option value="default"> </option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
@@ -151,7 +151,7 @@
 
 
                 <label for="level"><b>Level</b></label>
-                <select>
+                <select id = level>
                     <option value="default"> </option>
                     <option value="gcse">GCSE</option>
                     <option value="a-level">A-level</option>
@@ -160,7 +160,9 @@
  
 
                
-                <a href="test.html" type = "submit" class="registerbtn">Submit</a>
+                <a href="onlinetest.html" type = "submit" class="registerbtn" onclick = "populateStorage()">Submit</a>
+                
+                
             </div>
 
             <div class="container signin">
@@ -180,6 +182,7 @@
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="onlinetest.js"></script>
 
     </body>
 

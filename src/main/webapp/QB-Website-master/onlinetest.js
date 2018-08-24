@@ -4,29 +4,11 @@ var reply = null;
 var score = 0;
 
 
-var topic = "numbers";
-var difficulty = "easy";
-var level = "gcse";
+var topic = sessionStorage.getItem('topic');
+var difficulty = sessionStorage.getItem('difficulty');
+var level = sessionStorage.getItem('level');
 
 
-
-//function getQuestionLineId() {
-//
-//	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getQuestionLine/' + topic + "/" + difficulty + "/" + level;
-//	var request = new XMLHttpRequest();
-//    request.open('GET', requestURL);
-//    request.responseType = 'json';
-//    request.send();
-//    request.onload = function () {
-//    	var reply1 = request.response;
-//        var myH1 = document.createElement('h1');
-//        myH1.textContent = reply1.question_line_id;
-//        document.getElementsByTagName('section')[0].appendChild(myH1);
-//        return ana;
-//    }
-//
-//   
-//}
 
 function getQuestions(){
     
@@ -91,5 +73,15 @@ function calculateScore() {
 
 	document.getElementById('score').innerHTML = "Your scored "+ ((score/reply.length) * 100).toFixed(2) + "%";
 
+}
+
+function populateStorage() {
+	
+	sessionStorage.setItem('topic', document.getElementById('topic').value);
+	sessionStorage.setItem('difficulty', document.getElementById('difficulty').value);
+	sessionStorage.setItem('level', document.getElementById('level').value);
+	
+	
+	
 }
         

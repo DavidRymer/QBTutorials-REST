@@ -51,7 +51,6 @@ public class JDBC {
 	public static JSONArray read(String[] fields, String table, String whereField, String whereOperator, String whereFieldValue) throws SQLException {
 
 		dbConnect();
-		ResultSet rs = null;
 		JSONArray ja = null;
 
 		System.out.println("Creating statement...");
@@ -87,8 +86,7 @@ public class JDBC {
 		System.out.println(sql2);
 
 
-		try {
-			rs = stmt.executeQuery(sql2);
+		try (ResultSet rs = stmt.executeQuery(sql2);) {
 			ja = Convertor.convertResultSetIntoJSON(rs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -98,14 +96,6 @@ public class JDBC {
 			e.printStackTrace();
 		}
 
-		try {
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
 		return ja;
 
 	}

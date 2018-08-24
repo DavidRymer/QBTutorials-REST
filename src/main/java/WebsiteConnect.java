@@ -115,22 +115,23 @@ public class WebsiteConnect {
 		return questions;
 	}
 	
-//	@GET
-//	@Path("/getQuestionLine/{topic}/{difficulty}/{level}")
-//	public String getQuestionLineId(@PathParam("topic") String topic, @PathParam("difficulty") String difficulty, @PathParam("level") String level) throws SQLException {
-//		
-//		String[] fields = {"question_line_id"};
-//		
-//		String questionLine = JDBC.read(fields, "test", "topic = " + "'" + topic + "' AND " + "difficulty = " + "'" + difficulty+"' AND " + "level = " + "'" + level+"';", "", "").toString();
-////		int questionLineId = OnlineTest.firstInt(questionLine);
-//		
-//		questionLine = questionLine.replace("[", "");
-//		questionLine = questionLine.replace("]", "");
-//		System.out.println(questionLine);
-//		return questionLine;
-//		
-//		
-//	}
+	@GET
+	@Path("/login/{username}/{hashword}")
+	public String getQuestions(@PathParam("username") String username, @PathParam("hashword") String hashword) throws SQLException {
+		
+		String[] fields = {"username", "hashword"};
+		
+		String user = JDBC.read(fields, "user_details", "username", "=", "'" + username + "'").toString();
+		user = user.replace("[", "");
+		user = user.replace("]", "");
+		
+		System.out.println(user);
+		return user;
+	}
+	
+	
+	
+
 	
 	
 		

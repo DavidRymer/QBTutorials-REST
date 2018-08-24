@@ -129,11 +129,11 @@ a {
     <p>Please fill in this form to create an account.</p>
     <hr>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="username"><b>Username</b></label>
+    <input type="text" id = username placeholder="Enter Username" name="username" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" id = password placeholder="Enter Password" name="psw" required>
     <hr>
     <p>Forgotton your password? <a href="#">Click here</a>.</p>
 
@@ -141,7 +141,7 @@ a {
   </div>
   
   <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
+    <input type = "button" onclick = "login()" value = "login">
   </div>
 </form>
  
@@ -156,6 +156,7 @@ a {
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="login.js"></script>
 
   </body>
     
