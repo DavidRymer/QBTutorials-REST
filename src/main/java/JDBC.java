@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.ws.rs.PathParam;
 
 import org.json.JSONArray;
 
@@ -150,7 +151,31 @@ public class JDBC {
 
 		return ja.toString();
 
-
 	}
+	public static void createUser(String username, String password, String firstName, String lastName, String email) throws SQLException {
+        JDBC.dbConnect();
+		System.out.println("Inserting records into the table...");
+		int hashword = password.hashCode();
+
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String sql= "INSERT INTO user_details (username, hashword, first_name, last_name, email) VALUES ("+"'" + username +"' , "+"'" + hashword +"' , " +"'" + firstName +"'"+", " +"'"+ lastName +"'"+ ", " +"'"+ email+"'" +")";
+		System.out.println(sql);
+		try {
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Inserted records into the table...");
+		System.out.println(sql);
+		JDBC.disconnect();
+	}
+
 
 }

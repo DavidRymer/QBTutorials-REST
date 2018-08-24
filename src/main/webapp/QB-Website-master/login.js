@@ -19,15 +19,16 @@ function login(){
 		            var reply = request.response;
 		            console.log(reply.hashword);
 		            if (reply.hashword == hashword) {
-		            	alert("login successful");
+		            	document.getElementById("logincontainer").innerHTML = "Login Successful!"
 
 		            }
 		            else {
-		            	alert("login failed")
+		            	alert("login failed, Please try again")
 
 		            }
 		            
 	            }
+	            sessionStorage.clear();
 }
 
 function hashCode(str) {

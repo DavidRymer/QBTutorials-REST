@@ -46,31 +46,7 @@ public class WebsiteConnect {
 //
 //	}
 //	
-//	@POST
-//	@Path("/addUser/{firstName}/{lastName}/{email}/{assignedTutor}")
-//	public  void createUser(@PathParam("firstName") String firstName, @PathParam("lastName") String lastName, @PathParam("email") String email, @PathParam("assignedTutor") int assignedTutor) throws SQLException {
-//        dbConnect();
-//		System.out.println("Inserting records into the table...");
-//
-//		try {
-//			stmt = conn.createStatement();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		String sql= "INSERT INTO user_details (first_name, last_name, email, assigned_tutor) VALUES (" +"'" + firstName +"'"+", " +"'"+ lastName +"'"+ ", " +"'"+ email+"' , " +assignedTutor+ ")";
-//		try {
-//			stmt.executeUpdate(sql);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("Inserted records into the table...");
-//		System.out.println(sql);
-//		disconnect();
-//
-//	}
+
 //	
 //	
 //	
@@ -131,6 +107,13 @@ public class WebsiteConnect {
 	
 	
 	
+	@POST
+	@Path("/register/{username}/{password}/{firstName}/{lastName}/{email}")
+	public  void createUser(@PathParam("username") String username, @PathParam("password") String password, @PathParam("firstName") String firstName, @PathParam("lastName") String lastName, @PathParam("email") String email) throws SQLException {
+        
+		JDBC.createUser(username, password, firstName, lastName, email);
+
+	}
 
 	
 	
