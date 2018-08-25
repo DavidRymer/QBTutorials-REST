@@ -92,12 +92,26 @@ public class WebsiteConnect {
 	}
 	
 	@GET
-	@Path("/login/{username}/{hashword}")
-	public String getQuestions(@PathParam("username") String username, @PathParam("hashword") String hashword) throws SQLException {
+	@Path("/login/{username}")
+	public String login(@PathParam("username") String username) throws SQLException {
 		
-		String[] fields = {"username", "hashword"};
+		String[] fields = {"username", "hashword", "first_name"};
 		
 		String user = JDBC.read(fields, "user_details", "username", "=", "'" + username + "'").toString();
+		user = user.replace("[", "");
+		user = user.replace("]", "");
+		
+		System.out.println(user);
+		return user;
+	}
+	
+	@GET
+	@Path("/getEmail/{email}")
+	public String getEmail(@PathParam("email") String email) throws SQLException {
+		
+		String[] fields = {"email"};
+		
+		String user = JDBC.read(fields, "user_details", "email", "=", "'" + email + "'").toString();
 		user = user.replace("[", "");
 		user = user.replace("]", "");
 		
@@ -109,7 +123,7 @@ public class WebsiteConnect {
 	
 	@POST
 	@Path("/register/{username}/{password}/{firstName}/{lastName}/{email}")
-	public  void createUser(@PathParam("username") String username, @PathParam("password") String password, @PathParam("firstName") String firstName, @PathParam("lastName") String lastName, @PathParam("email") String email) throws SQLException {
+	public void createUser(@PathParam("username") String username, @PathParam("password") String password, @PathParam("firstName") String firstName, @PathParam("lastName") String lastName, @PathParam("email") String email) throws SQLException {
         
 		JDBC.createUser(username, password, firstName, lastName, email);
 

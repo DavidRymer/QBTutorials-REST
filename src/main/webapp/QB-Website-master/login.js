@@ -10,25 +10,65 @@ function login(){
 
 	var hashword = hashCode(password);
 	console.log(hashword);
-	            var requestURL = 'http://localhost:8080/QBTutorials/qb/web/login/' + username +'/' + hashword;
+	            var requestURL = 'http://localhost:8080/QBTutorials/qb/web/login/' + username;
 	            var request = new XMLHttpRequest();
 	            request.open('GET', requestURL);
 	            request.responseType = 'json';
 	            request.send();
 	            request.onload = function () {
 		            var reply = request.response;
-		            console.log(reply.hashword);
-		            if (reply.hashword == hashword) {
-		            	document.getElementById("logincontainer").innerHTML = "Login Successful!"
-
+	                   
+		            if (reply == null) {
+		            	
+		            	sessionStorage.clear();
+		            	sessionStorage.setItem('login result', "failed username");
+		            	
 		            }
-		            else {
-		            	alert("login failed, Please try again")
+		            else if (reply.hashword != hashword && reply !=null) {
+		            	
+		            	sessionStorage.clear();
+		            	sessionStorage.setItem('login result', "failed pass");
+		            	
+		            }
+		            
+		            else if (reply.hashword == hashword && reply !=null) {
+
+		            	sessionStorage.clear();
+		            	sessionStorage.setItem('name', reply.first_name);
+		            	sessionStorage.setItem('login result', "success");
+		            	
 
 		            }
 		            
+		           
+		         
+		            
 	            }
-	            sessionStorage.clear();
+	            
+}
+
+function setPage() {
+	var result = sessionStorage.getItem('login result');
+	
+	switch (result) {
+	case "failed username":
+		document.getElementById("login").innerHTML = "Login Failed!"
+		document.getElementById("message").innerHTML = "User does not exist.";
+		break;
+	case "failed pass":
+    	document.getElementById("login").innerHTML = "Login Failed!"
+	    document.getElementById("message").innerHTML = "Incorrect password.";
+		break;
+	case "success":
+    	document.getElementById("login").innerHTML = "Login Successful!"
+        document.getElementById("message").innerHTML = "Welcome back " +reply.first_name +".";
+
+	}
+	
+	
+	
+
+
 }
 
 function hashCode(str) {

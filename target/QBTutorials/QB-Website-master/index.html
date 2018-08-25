@@ -18,12 +18,12 @@
 
     </head>
 
-    <body>
+    <body onload = "setPage()">
 
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">QB Tutorials</a>
+                <a class="navbar-brand" href="#" id = welcome>QB Tutorials</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,7 +60,8 @@
                 <h1 class="display-3">QB Tutorials</h1>
                 <p class="lead">Our tutors are dedicated to ensuring that you have the best learning experience possible. We provide top quality teaching and excellent resources to develop your understanding of any GCSE or A-Level topic.</p>
                 <a href="register.html" class="btn btn-primary btn-lg">Register</a>
-                <a href="login.html" class="btn btn-primary btn-lg">Login</a>
+                <input type="button" id="loginout" class="btn btn-primary btn-lg" onclick="location.href='/QBTutorials/QB-Website-master/login.html'" value="Sign in" >
+               
             </header>
 
             <!-- Page Features -->
@@ -135,6 +136,7 @@
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="index.js"></script>
 
     </body>
 
