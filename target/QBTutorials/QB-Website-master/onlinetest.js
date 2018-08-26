@@ -36,6 +36,7 @@ function getQuestions(){
 			section.appendChild(myH1);
 			section.appendChild(myTextbox);
 			section.appendChild(myButton);
+			sessionStorage.clear();
 		}
 
 		var myScore = document.createElement('p');
@@ -72,6 +73,7 @@ function check(p1) {
 function calculateScore() {
 
 	document.getElementById('score').innerHTML = "Your scored "+ ((score/reply.length) * 100).toFixed(2) + "%";
+	sessionStorage.setItem('score', ((score/reply.length) * 100).toFixed(0));
 
 }
 
@@ -80,8 +82,6 @@ function populateStorage() {
 	sessionStorage.setItem('topic', document.getElementById('topic').value);
 	sessionStorage.setItem('difficulty', document.getElementById('difficulty').value);
 	sessionStorage.setItem('level', document.getElementById('level').value);
-	
-	
-	
+
 }
         

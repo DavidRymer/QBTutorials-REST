@@ -18,7 +18,7 @@
 
   </head>
 
-  <body>
+  <body onload = "setPage()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -153,7 +153,7 @@ left: 100px;
 <body>
 
 
-<form action="/action_page.php">
+<form action="/QBTutorials/QB-Website-master/register.html">
   <div class="container">
     <h1 id = outcome>Register</h1>
     <p id = message>Please fill in this form to create an account.</p>
@@ -181,10 +181,10 @@ left: 100px;
     <hr>
     <p>By creating an account you agree to our <a href="login.html">Terms & Privacy</a>.</p>
 
-    <button type="button" class="registerbtn" onclick = "register()">Register</button>
+    <button type="submit" class="registerbtn" onclick = "register()">Register</button>
   
   <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
+    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
   </div>
   </div>
 </form>
@@ -201,6 +201,7 @@ left: 100px;
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="register.js"></script>
+    
 
   </body>
     

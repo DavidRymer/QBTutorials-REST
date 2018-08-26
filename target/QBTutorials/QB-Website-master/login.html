@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body onload = "setPage()">
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -121,7 +121,7 @@ a {
 <body>
 
 
-	<form action="/action_page.php">
+	<form action="/QBTutorials/QB-Website-master/login.html">
 		<div class="container" id=logincontainer>
 			<h1 id = login>Login</h1>
 			<p id = message>Please fill in this form to create an account.</p>
@@ -137,7 +137,7 @@ a {
 				Forgotten your password? <a href="#">Click here</a>.
 			</p>
 
-			<button type="button" class="registerbtn" onclick="login()">Login</button>
+			<button type="submit" class="registerbtn" onclick="login()">Login</button>
 		</div>
 
 
@@ -156,6 +156,7 @@ a {
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="login.js"></script>
+	
 
 </body>
 

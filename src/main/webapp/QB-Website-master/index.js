@@ -6,7 +6,7 @@ function setPage() {
 
 		if (sessionStorage.getItem('name') != null) {
 
-			document.getElementById('welcome').innerHTML = "Hello " + sessionStorage.getItem('name') + "!";
+			document.getElementById('welcome').innerHTML = "Logged in as  " + sessionStorage.getItem('name') + "";
 			document.getElementById('loginout').setAttribute('value', 'Sign out');
 			document.getElementById('loginout').setAttribute('onclick', ifSignedIn);
 

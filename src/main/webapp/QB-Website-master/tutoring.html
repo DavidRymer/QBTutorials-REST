@@ -16,9 +16,10 @@
         <!-- Custom styles for this template -->
         <link href="css/heroic-features.css" rel="stylesheet">
 
+
     </head>
 
-    <body onload = "setPage()">
+    <body>
 
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -58,8 +59,8 @@
             <!-- Jumbotron Header -->
             <header class="jumbotron my-4">
                 <center>
-                    <h1 class="display-3">GCSE Videos</h1>
-                    <p> Fill out this form to get the video that you desire</p>
+                    <h1 class="display-3">Book a session</h1>
+                    <p> Book a session with one of our tutors. Our tutorials take place on Skype and are paid for via bank transfer.</p>
                 </center>    
 
             </header>
@@ -71,8 +72,8 @@
 
 
             /* Full-width input fields */
-            select {
-                width: 100%;
+            select, input[type=date] {
+                width: 80%;
                 padding: 15px;
                 margin: 5px 0 22px 0;
                 display: inline-block;
@@ -80,7 +81,7 @@
                 background: #f1f1f1;
             }
 
-            input[type=text]:focus, input[type=password]:focus {
+            input[type=text]:focus, input[type=password]:focus, input[type=date]:focus {
                 background-color: #ddd;
                 outline: none;
             }
@@ -98,7 +99,7 @@
                 background-color: #4CAF50;
                 color: white;
                 padding: 16px 45%;
-                margin: 8px 0px;
+                margin: 8px 0;
                 border: none;
                 cursor: pointer;
                 width: 100%;
@@ -121,54 +122,52 @@
             }
         </style>
         </head>
-    <body>
+<body>
 
-	
-		<form action="/QBTutorials/QB-Website-master/videos.html">
-			<div class="container">
-				<h1 id = outcome>Video Criteria</h1>
-				<p id = message>Fill in these fields to get the type of test you want.</p>
-				<hr>
 
-				<label for="section"><b>Section</b></label> <select id="prov"></select>
+	<form action="/action_page.php">
+		<div class="container">
+			<hr>
+			<center>
+				<label for="date"><b>Date</b></label> <input type="date" id=date
+					data-date-inline-picker="true" />
+				
+				<div id=myDiv></div>
 
-				<label for="topic"><b>Topic</b></label> <select id="town"></select>
-				<br>
+			</center>
+			
 
-				<hr>
+			<hr>
 
-				<input type="button" class="registerbtn" onclick="youtube(); setPage()"
-					value="Submit">
-			</div>
+			<input type="button" class="registerbtn"
+				onclick="checkAvailability()" value="Submit">
 
-			<div class="container signin"></div>
-		</form> <br><br><br><br>
-		<center>         
-<iframe id = vid width="1" height="1" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> <br><br><br><br>
-</center> 
+
+		</div>
+
+		<div class="container signin"></div>
+	</form>
 	<br>
 	<br>
 
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; QB Tutorials 2018</p>
-            </div>
-            <!-- /.container -->
-        </footer>
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; QB
+				Tutorials 2018</p>
+		</div>
+		<!-- /.container -->
+	</footer>
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="videos.js"></script>
-        <script src="youtube.js"></script>
-        <script src="videoselect.js"></script>
-        
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="tutoring.js"></script>
 
-    </body>
+
+
+
+</body>
 
 
 </html>
-
-
-

@@ -176,6 +176,30 @@ public class JDBC {
 		System.out.println(sql);
 		JDBC.disconnect();
 	}
+	
+	public static void createTestResult(int userID, int score, int testID) throws SQLException {
+        dbConnect();
+		System.out.println("Inserting records into the table...");
+
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String sql= "INSERT INTO test_results (user_id, score, test_id) VALUES (" + userID +", " + score + ", " + testID + ")";
+		try {
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Inserted records into the table...");
+		System.out.println(sql);
+		disconnect();
+
+	}
 
 
 }

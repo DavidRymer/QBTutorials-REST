@@ -2,12 +2,12 @@
 function register(){
 	
 	populateStorage();
-	var username = sessionStorage.getItem('username', document.getElementById('username').value);
-	var password = sessionStorage.getItem('password', document.getElementById('password').value);
-	var firstname = sessionStorage.getItem('firstname', document.getElementById('firstname').value);
-	var lastname = sessionStorage.getItem('lastname', document.getElementById('lastname').value);
-	var email = sessionStorage.getItem('email', document.getElementById('email').value);
-	var repeat = sessionStorage.getItem('repeatpassword', document.getElementById('repeatpassword').value);
+	var username = sessionStorage.getItem('username');
+	var password = sessionStorage.getItem('password');
+	var firstname = sessionStorage.getItem('firstname');
+	var lastname = sessionStorage.getItem('lastname');
+	var email = sessionStorage.getItem('email');
+	var repeat = sessionStorage.getItem('repeatpassword');
 	
 	checkUsername();
 	checkEmail();
@@ -79,8 +79,8 @@ function checkEmail(){
 function checkPassword() {
 	
 	populateStorage();
-	var pass = sessionStorage.setItem('password');
-	var repeatPass = sessionStorage.setItem('repeatpassword');
+	var pass = sessionStorage.getItem('password');
+	var repeatPass = sessionStorage.getItem('repeatpassword');
 	
 	if (pass != repeatPass) {
 		
@@ -105,9 +105,11 @@ function setPage() {
 	case "success":
 		document.getElementById("outcome").innerHTML = "Account creation successful!";
 		document.getElementById("message").innerHTML = "Enjoy our site.";
+		break;
 	case "pass fail":
 		document.getElementById("outcome").innerHTML = "Passwords do not match!";
 		document.getElementById("message").innerHTML = "Please enter matching passwords.";
+		break;
 	}
 	
 	if (sessionStorage.getItem('name') != null) {

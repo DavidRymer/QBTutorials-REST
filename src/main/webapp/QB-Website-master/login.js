@@ -3,8 +3,8 @@
 
 function login(){
 	populateStorage();
-	var username = sessionStorage.getItem('username');
-    var password = sessionStorage.getItem('password');
+	var username = sessionStorage.getItem('username1');
+    var password = sessionStorage.getItem('password1');
 	console.log(username);
 	console.log(password);
 
@@ -34,7 +34,9 @@ function login(){
 		            else if (reply.hashword == hashword && reply !=null) {
 
 		            	sessionStorage.clear();
-		            	sessionStorage.setItem('name', reply.first_name);
+		            	sessionStorage.setItem('name', reply.first_name)
+		            	sessionStorage.setItem('username1', reply.username);
+		            	sessionStorage.setItem('userId', reply.user_id);;
 		            	sessionStorage.setItem('login result', "success");
 		            	
 
@@ -78,8 +80,8 @@ function hashCode(str) {
 
 function populateStorage() {
 	
-	sessionStorage.setItem('username', document.getElementById('username').value);
-	sessionStorage.setItem('password', document.getElementById('password').value);
+	sessionStorage.setItem('username1', document.getElementById('username').value);
+	sessionStorage.setItem('password1', document.getElementById('password').value);
 
 	
 }

@@ -17,35 +17,16 @@ public class WebsiteConnect {
 	
 	
 	
-//	
-//	
-//	@POST
-//	@Produces("Application/json")
-//	@Path("/addResult/{userID}/{score}/{testID}")
-//	public void createTestResult(@PathParam("userID") int userID, @PathParam("score") int score, @PathParam("testID") int testID) throws SQLException {
-//        dbConnect();
-//		System.out.println("Inserting records into the table...");
-//
-//		try {
-//			stmt = conn.createStatement();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		String sql= "INSERT INTO test_results (user_id, score, test_id) VALUES (" + userID +", " + score + ", " + testID + ")";
-//		try {
-//			stmt.executeUpdate(sql);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("Inserted records into the table...");
-//		System.out.println(sql);
-//		disconnect();
-//
-//	}
-//	
+	
+	
+	@POST
+	@Produces("Application/json")
+	@Path("/addResult/{userID}/{score}/{testID}")
+	public void addResult(@PathParam("userID") int userId, @PathParam("score") int score, @PathParam("testID") int testId) throws SQLException {
+		
+		JDBC.createTestResult(userId, score, testId);
+	}
+	
 
 //	
 //	
@@ -127,6 +108,19 @@ public class WebsiteConnect {
         
 		JDBC.createUser(username, password, firstName, lastName, email);
 
+	}
+	
+	@GET
+	@Path("/getTimes/{date}")
+	public String getTimes(@PathParam("date") String date) throws SQLException {
+		
+		String[] fields = {"hour"};
+		
+		String user = JDBC.read(fields, "tutor_session", "date", "=", "'" + date + "'").toString();
+	
+		
+		System.out.println(user);
+		return user;
 	}
 
 	
