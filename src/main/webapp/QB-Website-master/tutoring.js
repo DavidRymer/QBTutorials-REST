@@ -1,3 +1,4 @@
+var section = document.querySelector("select");
 
 function checkAvailability() {
 
