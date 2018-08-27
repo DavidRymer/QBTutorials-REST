@@ -139,16 +139,17 @@ a {
 	<form action="/action_page.php">
 		<div class="container">
 			<hr>
+			<center>
 		
 				<label for="date"><b>Date</b></label> <input type="date" id=date
-					data-date-inline-picker="true" /> 
-					<input type="button" id=submit1
-					value="Submit" onclick="checkAvailability()"><br>
+					data-date-inline-picker="true" onchange = "checkAvailability()" />  <br>
 					
 			<label for="date"><b>Time</b></label> <select id=hours>
 			
 
 			</select>
+			
+			</center>
 
 			<div id=myDiv></div>
 

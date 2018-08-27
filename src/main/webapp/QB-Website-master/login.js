@@ -20,20 +20,20 @@ function login(){
 	                   
 		            if (reply == null) {
 		            	
-		            	sessionStorage.clear();
+		            	
 		            	sessionStorage.setItem('login result', "failed username");
 		            	
 		            }
 		            else if (reply.hashword != hashword && reply !=null) {
 		            	
-		            	sessionStorage.clear();
+		            	
 		            	sessionStorage.setItem('login result', "failed pass");
 		            	
 		            }
 		            
 		            else if (reply.hashword == hashword && reply !=null) {
 
-		            	sessionStorage.clear();
+		            	
 		            	sessionStorage.setItem('name', reply.first_name)
 		            	sessionStorage.setItem('username1', reply.username);
 		            	sessionStorage.setItem('userId', reply.user_id);;
@@ -63,9 +63,10 @@ function setPage() {
 		break;
 	case "success":
     	document.getElementById("login").innerHTML = "Login Successful!"
-        document.getElementById("message").innerHTML = "Welcome back " +reply.first_name +".";
+        document.getElementById("message").innerHTML = "Welcome back.";
 
 	}
+	
 	
 	
 	

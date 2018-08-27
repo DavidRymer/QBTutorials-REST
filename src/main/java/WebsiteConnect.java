@@ -27,6 +27,14 @@ public class WebsiteConnect {
 		JDBC.createTestResult(userId, score, testId);
 	}
 	
+	@POST
+	@Produces("Application/json")
+	@Path("/addResult/{userID}/{score}/{testID}")
+	public void addResult(@PathParam("userID") int userId, @PathParam("score") int score, @PathParam("testID") int testId) throws SQLException {
+		
+		JDBC.createTestResult(userId, score, testId);
+	}
+	
 
 //	
 //	

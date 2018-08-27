@@ -26,7 +26,7 @@ function register(){
 }
 
 function checkUsername(){
-	populateStorage();
+	
 	var username = sessionStorage.getItem('username', document.getElementById('username').value);
 
 	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/login/' + username;
@@ -53,7 +53,7 @@ function checkUsername(){
 }
 
 function checkEmail(){
-	populateStorage();
+
 	var email = sessionStorage.getItem('email', document.getElementById('email').value);
 
 	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getEmail/' + email;
@@ -78,7 +78,7 @@ function checkEmail(){
 
 function checkPassword() {
 	
-	populateStorage();
+	
 	var pass = sessionStorage.getItem('password');
 	var repeatPass = sessionStorage.getItem('repeatpassword');
 	
