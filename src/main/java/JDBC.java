@@ -200,6 +200,34 @@ public class JDBC {
 		disconnect();
 
 	}
+	
+	
+
+	public static void createTutorSession(String tutorID, int userID, String date, int hour) throws SQLException {
+		
+        dbConnect();
+		System.out.println("Inserting records into the table...");
+
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String sql= "INSERT INTO tutor_session (tutor_id, user_id, date, hour) VALUES (" + tutorID +", "+ userID +", '" + date + "', " +hour + ")";
+		try {
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Inserted records into the table...");
+		System.out.println(sql);
+		disconnect();
+	}
+
+	
 
 
 }

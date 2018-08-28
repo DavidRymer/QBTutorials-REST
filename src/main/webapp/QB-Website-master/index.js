@@ -27,6 +27,8 @@ function setPage() {
 function signOut() {
 	sessionStorage.removeItem('name');
 	sessionStorage.removeItem('login result');
+	sessionStorage.removeItem('username1');
+	sessionStorage.removeItem('userId');
 	setPage();
 	
 }

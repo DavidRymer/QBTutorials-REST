@@ -29,45 +29,11 @@ public class WebsiteConnect {
 	
 	@POST
 	@Produces("Application/json")
-	@Path("/addResult/{userID}/{score}/{testID}")
-	public void addResult(@PathParam("userID") int userId, @PathParam("score") int score, @PathParam("testID") int testId) throws SQLException {
+	@Path("/addSession/{tutorId}/{userId}/{date}/{hour}")
+	public void addSession(@PathParam("tutorId") String tutorId, @PathParam("userId") int userId, @PathParam("date") String date, @PathParam("hour") int hour) throws SQLException {
 		
-		JDBC.createTestResult(userId, score, testId);
+		JDBC.createTutorSession(tutorId, userId, date, hour);
 	}
-	
-
-//	
-//	
-//	
-//	@POST
-//	@Path("/addTutorSession/{tutorID}/{userID}/{length}/{dateTime}")
-//	public  void createTutorSession(@PathParam("tutorID") int tutorID, @PathParam("userID") int userID, @PathParam("length") int length, @PathParam("dateTime") String dateTime) throws SQLException {
-//		
-//        dbConnect();
-//		System.out.println("Inserting records into the table...");
-//
-//		try {
-//			stmt = conn.createStatement();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		String sql= "INSERT INTO tutor_session (tutor_id, user_id, length, date_time) VALUES (" + tutorID +", "+ userID +", " + length + ", " +"'"+ dateTime +"'"+ ")";
-//		try {
-//			stmt.executeUpdate(sql);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("Inserted records into the table...");
-//		System.out.println(sql);
-//		disconnect();
-//	}
-//
-//	
-	
-	
 	
 
 	
@@ -84,7 +50,7 @@ public class WebsiteConnect {
 	@Path("/login/{username}")
 	public String login(@PathParam("username") String username) throws SQLException {
 		
-		String[] fields = {"username", "hashword", "first_name"};
+		String[] fields = {"username", "hashword", "first_name", "user_id"};
 		
 		String user = JDBC.read(fields, "user_details", "username", "=", "'" + username + "'").toString();
 		user = user.replace("[", "");

@@ -4,49 +4,47 @@
 function login(){
 	populateStorage();
 	var username = sessionStorage.getItem('username1');
-    var password = sessionStorage.getItem('password1');
+	var password = sessionStorage.getItem('password1');
 	console.log(username);
 	console.log(password);
 
 	var hashword = hashCode(password);
 	console.log(hashword);
-	            var requestURL = 'http://localhost:8080/QBTutorials/qb/web/login/' + username;
-	            var request = new XMLHttpRequest();
-	            request.open('GET', requestURL);
-	            request.responseType = 'json';
-	            request.send();
-	            request.onload = function () {
-		            var reply = request.response;
-	                   
-		            if (reply == null) {
-		            	
-		            	
-		            	sessionStorage.setItem('login result', "failed username");
-		            	
-		            }
-		            else if (reply.hashword != hashword && reply !=null) {
-		            	
-		            	
-		            	sessionStorage.setItem('login result', "failed pass");
-		            	
-		            }
-		            
-		            else if (reply.hashword == hashword && reply !=null) {
+	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/login/' + username;
+	var request = new XMLHttpRequest();
+	request.open('GET', requestURL);
+	request.responseType = 'json';
+	request.send();
+	request.onload = function () {
+		var reply = request.response;
 
-		            	
-		            	sessionStorage.setItem('name', reply.first_name)
-		            	sessionStorage.setItem('username1', reply.username);
-		            	sessionStorage.setItem('userId', reply.user_id);;
-		            	sessionStorage.setItem('login result', "success");
-		            	
+		if (reply == null) {
 
-		            }
-		            
-		           
-		         
-		            
-	            }
-	            
+
+			sessionStorage.setItem('login result', "failed username");
+
+		}
+		else if (reply.hashword != hashword && reply !=null) {
+
+
+			sessionStorage.setItem('login result', "failed pass");
+
+		}
+
+		else if (reply.hashword == hashword && reply !=null) {
+
+
+			sessionStorage.setItem('name', reply.first_name)
+			sessionStorage.setItem('username1', reply.username);
+			sessionStorage.setItem('userId', reply.user_id);;
+			sessionStorage.setItem('login result', "success");
+
+
+		}
+
+		setPage();
+
+	}	            
 }
 
 function setPage() {

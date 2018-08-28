@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Heroic Features - Start Bootstrap Template</title>
+<title>Tutoring</title>
 
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -136,9 +136,10 @@ a {
 <body>
 
 
-	<form action="/action_page.php">
+	<form action="QBTutorials/QB-Website-master/tutoring.html">
 		<div class="container">
 			<hr>
+			
 			<center>
 		
 				<label for="date"><b>Date</b></label> <input type="date" id=date
@@ -148,15 +149,16 @@ a {
 			
 
 			</select>
-			
+			<p id = message></p>
 			</center>
+			
 
 			<div id=myDiv></div>
 
 			<hr>
 
 			<input type="button" class="registerbtn"
-				onclick="checkAvailability()" value="Submit">
+				onclick="addSession()" value="Submit">
 
 
 		</div>

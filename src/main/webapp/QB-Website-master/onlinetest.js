@@ -36,7 +36,7 @@ function getQuestions(){
 			section.appendChild(myH1);
 			section.appendChild(myTextbox);
 			section.appendChild(myButton);
-			sessionStorage.clear();
+			clearStorage();
 		}
 
 		var myScore = document.createElement('p');
@@ -83,5 +83,13 @@ function populateStorage() {
 	sessionStorage.setItem('difficulty', document.getElementById('difficulty').value);
 	sessionStorage.setItem('level', document.getElementById('level').value);
 
+}
+
+function clearStorage() {
+	
+	sessionStorage.removeItem('topic');
+	sessionStorage.removeItem('difficulty');
+	sessionStorage.removeItem('level');
+	
 }
         

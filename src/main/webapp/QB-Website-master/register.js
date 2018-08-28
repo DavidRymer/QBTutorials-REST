@@ -1,22 +1,26 @@
-
 function register(){
 	
-	populateStorage();
-	var username = sessionStorage.getItem('username');
-	var password = sessionStorage.getItem('password');
-	var firstname = sessionStorage.getItem('firstname');
-	var lastname = sessionStorage.getItem('lastname');
-	var email = sessionStorage.getItem('email');
-	var repeat = sessionStorage.getItem('repeatpassword');
 	
-	checkUsername();
-	checkEmail();
+	var username = document.getElementById('username').value;
+	var password = document.getElementById('password').value;
+	var firstname = document.getElementById('firstname').value;
+	var lastname = document.getElementById('lastname').value;
+	var email = document.getElementById('email').value;
+	var repeat = document.getElementById('repeatpassword').value;
+	var res = sessionStorage.getItem('page');
+	
 	checkPassword();
+	
+	if (res != "dupe user" && res != "dupe email") {
+		sessionStorage.setItem('page', 'success');
+		
+	}
+	console.log(sessionStorage.getItem('page')+"3");
 
 	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/register/' + username +'/' 
 	+ password+'/'+ firstname +'/' + lastname +'/'+ email;
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", requestURL, true);
+	xhr.open("POST", requestURL, false);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send();
 	
@@ -26,8 +30,8 @@ function register(){
 }
 
 function checkUsername(){
-	
-	var username = sessionStorage.getItem('username', document.getElementById('username').value);
+
+	var username = document.getElementById('username').value;
 
 	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/login/' + username;
 	var request = new XMLHttpRequest();
@@ -42,10 +46,8 @@ function checkUsername(){
 			sessionStorage.setItem('page', "dupe user");
 				
 		}
-		else {
-			sessionStorage.setItem('page', "success");
-			
-		}
+		
+		console.log(sessionStorage.getItem('page')+"1");
 
 
 	}
@@ -53,8 +55,8 @@ function checkUsername(){
 }
 
 function checkEmail(){
-
-	var email = sessionStorage.getItem('email', document.getElementById('email').value);
+	
+	var email = document.getElementById('email').value;
 
 	var requestURL = 'http://localhost:8080/QBTutorials/qb/web/getEmail/' + email;
 	var request = new XMLHttpRequest();
@@ -70,7 +72,7 @@ function checkEmail(){
 
 		}
 		
-	
+	console.log(sessionStorage.getItem('page')+"2");
 
 	}
 
@@ -79,8 +81,8 @@ function checkEmail(){
 function checkPassword() {
 	
 	
-	var pass = sessionStorage.getItem('password');
-	var repeatPass = sessionStorage.getItem('repeatpassword');
+	var pass = document.getElementById('password').value;
+	var repeatPass = document.getElementById('repeatpassword').value;
 	
 	if (pass != repeatPass) {
 		
@@ -111,14 +113,11 @@ function setPage() {
 		document.getElementById("message").innerHTML = "Please enter matching passwords.";
 		break;
 	}
+	sessionStorage.clear();
 	
-	if (sessionStorage.getItem('name') != null) {
-
-		sessionStorage.removeItem('page');
-	}
-	else {
-		sessionStorage.clear();
-	}
+	
+		
+	
 
 }
 
@@ -138,4 +137,3 @@ function populateStorage() {
 
 
 }
-	
